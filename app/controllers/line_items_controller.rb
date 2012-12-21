@@ -46,8 +46,9 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart}
+        format.js { render :json => @line_item, :status => :created, :location => @line_item }
         format.json { render :json => @line_item, :status => :created, :location => @line_item }
+        format.html { redirect_to store_url}
       else
         format.html { render :action => "new" }
         format.json { render :json => @line_item.errors, :status => :unprocessable_entity }
@@ -80,7 +81,7 @@ class LineItemsController < ApplicationController
 
 
     respond_to do |format|
-      format.html { redirect_to cart_url(cart.id) }
+      format.html { redirect_to store_url }
       format.json { head :no_content }
     end
   end

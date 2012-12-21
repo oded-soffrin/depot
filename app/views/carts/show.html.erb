@@ -2,19 +2,6 @@
     <p id="notice"><%= notice %></p>
 <% end %>
 
+<%= render(@cart) %>
 
-<h2>Shrooms to take home</h2>
-<table>
-  <% @cart.line_items.each do |item| %>
-  <tr><td><%= item.quantity %> &times; </td><td><%= item.product.title %></td><td><%= number_to_currency(item.total_price) %></td></tr>
-      <tr><td colspan=4><%= button_to 'Remove from my cart', item, :controller=>:line_items, :method => :delete %></td></tr>
-  <% end %>
-  <tr class="total_line">
-    <td colspan='2'>Total</td>
-    <td class='total_cell'><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
-</table>
-
-<%= button_to 'Empty cart', @cart, :method => :delete, :confirm=>'Are you sure?' %>
-<%# link_to 'Edit', edit_cart_path(@cart) %>
 <%= link_to 'Back', store_path %>
