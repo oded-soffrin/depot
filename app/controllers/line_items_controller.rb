@@ -78,6 +78,7 @@ class LineItemsController < ApplicationController
     cart = @line_item.cart.remove_product(@line_item.id)
     @line_item.destroy
 
+
     respond_to do |format|
       format.html { redirect_to cart_url(cart.id) }
       format.json { head :no_content }
