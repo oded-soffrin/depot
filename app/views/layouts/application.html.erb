@@ -22,9 +22,9 @@
       <li><a href="#">News</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-    <div id="cart">
+    <%= hidden_div_if(@cart.line_items.empty?, :id => 'cart') do %>
       <%=  render(@cart) %>
-    </div>
+    <% end %>
   </div>
 
   <div id="main">
